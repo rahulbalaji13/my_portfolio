@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rahul Balaji</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+    /* Responsive improvements for mobile */
+    html, body {
+        max-width: 100vw;
+        overflow-x: hidden;
+    }
+    .container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1rem;
+        box-sizing: border-box;
+    }
+    .navbar .nav-menu {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        justify-content: center;
+        padding: 0;
+        margin: 0;
+    }
+    .navbar .nav-link {
+        font-size: 1rem;
+        padding: 0.5rem 0.7rem;
+    }
+    .hero-content {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+    }
+    .profile-image {
+        text-align: center;
+    }
+    .profile-img {
+        width: 400px;
+        height: 400px;
+        margin-left: 40px;
+        object-fit: cover;
+        border-radius: 50%;
+        box-shadow: 0 0 0 8px #fff, 0 0 0 16px rgba(0,0,0,0.07);
+        position: relative;
+        z-index: 2;
+    }
+    .orbit-ring {
+        margin-left: 40px;
+        margin-top: -180px;
+        position: relative;
+        width: 400px;
+        height: 400px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .orbit-icon {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 48px;
+        height: 48px;
+        margin: -24px;
+        font-size: 2rem;
+        color: #3a3a3a;
+        background: #fff;
+        border-radius: 50%;
+        box-shadow: 0 2px 8px #0001;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        animation: orbit 20s linear infinite;
+        animation-delay: var(--delay, 0s);
+    }
+    @keyframes orbit {
+        0% {
+            transform: rotate(0deg) translateX(200px) rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg) translateX(200px) rotate(-360deg);
+        }
+    }
+    }
+    .hero-text {
+        min-width: 220px;
+        max-width: 400px;
+    }
+    .skills-grid, .certifications-grid, .experience-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        justify-content: center;
+    }
+    .skill-card, .cert-card, .experience-card {
+        min-width: 220px;
+        max-width: 320px;
+        flex: 1 1 220px;
+        box-sizing: border-box;
+    }
+    .projects-grid {
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+        overflow-x: auto;
+        padding-bottom: 1rem;
+        scroll-snap-type: x mandatory;
+    }
+    .projects-grid .cert-card.project-card {
+        min-width: 220px;
+        max-width: 90vw;
+        flex: 0 0 auto;
+        scroll-snap-align: start;
+        margin-bottom: 0;
+    }
+    .problem-solving-content {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    .problem-solving-content > div {
+        min-width: 0;
+        max-width: 100vw;
+    }
+    .contact-content {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    .contact-info, .contact-form {
+        width: 100%;
+        min-width: 0;
+        max-width: 100vw;
+    }
+    .blog-posts {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    .blog-post {
+        min-width: 0;
+        max-width: 100vw;
+    }
+    @media (max-width: 900px) {
+        .hero-content {
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        .hero-text {
+            max-width: 95vw;
+        }
+    }
+    @media (max-width: 600px) {
+        .container {
+            padding: 0 0.5rem;
+        }
+        .navbar .nav-menu {
+            flex-direction: column;
+            gap: 0.2rem;
+        }
+        .navbar .nav-link {
+            font-size: 0.98rem;
+            padding: 0.4rem 0.5rem;
+        }
+        .profile-img {
+            width: 260px;
+            height: 260px;
+            margin-left: 18px;
+        }
+        .orbit-ring {
+            margin-left: 0;
+            margin-top: -100px;
+            width: 260px;
+            height: 260px;
+        }
+        .profile-img {
+            width: 260px;
+            height: 260px;
+            margin-left: 18px;
+        }
+        .orbit-icon {
+            width: 32px;
+            height: 32px;
+            margin: -16px;
+            font-size: 1.2rem;
+        }
+        .projects-grid .cert-card.project-card {
+            min-width: 85vw;
+            max-width: 98vw;
+        }
+        .problem-solving-content > div {
+            min-width: 0;
+            max-width: 98vw;
+        }
+        .blog-post {
+            max-width: 98vw;
+        }
+    }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">Rahul Balaji</div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#experience" class="nav-link">Experience</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#certifications" class="nav-link">Certifications</a></li>
+                <li><a href="#problem-solving" class="nav-link">Problem Solving</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li><a href="#blog" class="nav-link">Blog</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+            <div class="shape shape-5"></div>
+        </div>
+        
+        <div class="hero-content">
+                <div class="profile-image">
+                    <img src="My images.jpg" alt="Rahul Balaji" class="profile-img">
+                </div>
+                <div class="visitor-count" style="margin-top: 1rem; text-align: center; font-size: 1.1rem; color: #555;">
+                    <a href="https://www.freecounterstat.com" title="free counters for websites"><img src="https://counter1.optistats.ovh/private/freecounterstat.php?c=xwchjnpj89xhzhjylulxh7na11xqrep9" border="0" title="free counters for websites" alt="free counters for websites"></a>
+                </div>
+
+                <!-- Orbiting Technology Icons -->
+                <div class="orbit-ring" style="margin-left: 60px;">
+                    <div class="orbit-icon" style="--delay: 0s;" data-tech="React">
+                        <i class="fab fa-react"></i>
+                    </div>
+                    <div class="orbit-icon" style="--delay: -1.33s;" data-tech="Python">
+                        <i class="fab fa-python"></i>
+                    </div>
+                    <div class="orbit-icon" style="--delay: -2.66s;" data-tech="JavaScript">
+                        <i class="fab fa-js-square"></i>
+                    </div>
+                    <div class="orbit-icon" style="--delay: -3.99s;" data-tech="AWS">
+                        <i class="fab fa-aws"></i>
+                    </div>
+                    <div class="orbit-icon" style="--delay: -5.32s;" data-tech="Docker">
+                        <i class="fab fa-docker"></i>
+                    </div>
+                    <div class="orbit-icon" style="--delay: -6.65s;" data-tech="MongoDB">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <div class="orbit-icon" style="--delay: -7.98s;" data-tech="Node.js">
+                        <i class="fab fa-node-js"></i>
+                    </div>
+                    <div class="orbit-icon" style="--delay: -9.31s;" data-tech="Git">
+                        <i class="fab fa-git-alt"></i>
+                    </div>
+                    <div class="orbit-icon" style="--delay: -10.64s;" data-tech="Linux">
+                        <i class="fab fa-linux"></i>
+                    </div>
+                    <div class="orbit-icon" style="--delay: -11.97s;" data-tech="HTML5">
+                        <i class="fab fa-html5"></i>
+                    </div>
+                    <div class="orbit-icon" style="--delay: -13.30s;" data-tech="CSS3">
+                        <i class="fab fa-css3-alt"></i>
+                    </div>
+                    <div class="orbit-icon" style="--delay: -14.63s;" data-tech="Machine Learning">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <div class="orbit-icon" style="--delay: -15.96s;" data-tech="AI">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="orbit-icon" style="--delay: -17.29s;" data-tech="Data Science">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="orbit-icon" style="--delay: -18.62s;" data-tech="Cloud Computing">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hero-text">
+                <h1 class="hero-name">RAHUL BALAJI</h1>
+                <p class="hero-title">Aspiring SDE with MTech in CSE | SIH'23 Finalist | Chief Guest & Jury | Mentored 100+ Bright Minds</p>
+                <div class="hero-contact">
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>9080618420</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>rahul.balaji2026@gmail.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>No :3, Second New Street, Thirunagar, Vellore - 632006, Tamil Nadu, India</span>
+                    </div>
+                </div>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn--primary">Get In Touch</a>
+                    <a href="https://drive.google.com/file/d/1nDAMCW3HLVcdIb9OB--PGYkPDao8HDef/view?usp=sharing" target="_blank" class="btn btn--outline">
+                        <i class="fas fa-download"></i> DOWNLOAD MY RESUME
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">About Me</h2>
+                <div class="section-divider"></div>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Passionate Software Development Engineer pursuing M.Tech in CSE at VIT, dedicated to building scalable systems and AI-driven applications that make a difference.</p>
+                    <p>As a Smart India Hackathon 2023 Finalist and an active mentor to 100+ bright minds, I bring a unique blend of technical expertise and leadership experience. My journey spans from collaborative work with the Ministry of Education to serving as a chief guest and jury member in various technical events.</p>
+                    <p>I thrive on solving complex problems and am constantly exploring new technologies to create innovative solutions that bridge the gap between cutting-edge research and real-world applications.</p>
+                </div>
+                <div class="about-highlights">
+                    <div class="highlight-item">
+                        <div class="highlight-number">100+</div>
+                        <div class="highlight-label">Mentored Brights Minds</div>
+                    </div>
+                    <div class="highlight-item">
+                        <div class="highlight-number">14</div>
+                        <div class="highlight-label">Certifications</div>
+                    </div>
+                    <div class="highlight-item">
+                        <div class="highlight-number">SIH'23</div>
+                        <div class="highlight-label">Finalist</div>
+                    </div>
+                    <div class="highlight-item">
+                        <div class="highlight-number">MOE</div>
+                        <div class="highlight-label">Collaboration</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Skills & Expertise</h2>
+                <div class="section-divider"></div>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-card" data-aos="fade-up" data-aos-delay="0">
+                    <div class="skill-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Web Development</h3>
+                    <p>Full-stack development with modern frameworks and technologies</p>
+                </div>
+                <div class="skill-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="skill-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Artificial Intelligence</h3>
+                    <p>Machine learning and AI-driven application development</p>
+                </div>
+                <div class="skill-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="skill-icon">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <h3>Cloud Computing</h3>
+                    <p>AWS Amazon EC2, Amazon S3, and cloud infrastructure</p>
+                </div>
+                <div class="skill-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="skill-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3>Data Science</h3>
+                    <p>Data analysis, visualization, and machine learning</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="education">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Education</h2>
+                <div class="section-divider"></div>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year">2024-2026</div>
+                    <div class="timeline-content">
+                        <h3>M.Tech in Computer Science and Engineering</h3>
+                        <p>Vellore Institute of Technology</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2020-2024</div>
+                    <div class="timeline-content">
+                        <h3>B.E in Computer Science and Engineering</h3>
+                        <p>C. Abdul Hakeem College of Engineering & Technology</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2018-2020</div>
+                    <div class="timeline-content">
+                        <h3>Higher Secondary</h3>
+                        <p>Sunbeam CBSE Schools</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2016-2018</div>
+                    <div class="timeline-content">
+                        <h3>Secondary Education</h3>
+                        <p>Bhagwan Mahaveer Dayaniketan Jain School</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Experience</h2>
+                <div class="section-divider"></div>
+            </div>
+            <div class="experience-grid">
+                <div class="experience-card">
+                    <h3>Ministry of Education Collaboration</h3>
+                    <div class="experience-period">January 2024 - February 2024</div>
+                    <p>Collaborated on real-world challenges, engaged in rapid prototyping, and enhanced entrepreneurial mindset through the IDE Bootcamp program.</p>
+                </div>
+                <div class="experience-card">
+                    <h3>Smart India Hackathon 2023</h3>
+                    <div class="experience-period">December 2023</div>
+                    <p>Led a dynamic team as Grand Finalist, driving creativity and collaboration under tight deadlines to solve national-level challenges.</p>
+                </div>
+                <div class="experience-card">
+                    <h3>Mentoring & Speaking</h3>
+                    <div class="experience-period">Ongoing</div>
+                    <p>Served as a speaker, jury member, and mentor to over 100 budding engineers across various technical events and competitions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <!-- Problem Solving Section -->
+    <section id="problem-solving" class="problem-solving">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Problem Solving & Coding Stats</h2>
+                <div class="section-divider"></div>
+            </div>
+            <div class="problem-solving-content" style="display: flex; flex-wrap: wrap; gap: 2rem; align-items: flex-start; justify-content: center;">
+                <!-- GitHub Stats -->
+                <div style="min-width:320px;max-width:420px;text-align:center;">
+                    <h3>GitHub Statistics</h3>
+                    <img src="https://github-readme-stats.vercel.app/api?username=rahulbalaji13&show_icons=true&theme=radical" alt="GitHub Stats" style="width:100%;max-width:420px;border-radius:12px;box-shadow:0 2px 8px #0001;">
+                    <img src="https://github-readme-streak-stats.herokuapp.com/?user=rahulbalaji13&theme=radical" alt="GitHub Streak" style="width:100%;max-width:420px;margin-top:1rem;border-radius:12px;box-shadow:0 2px 8px #0001;">
+                    <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=rahulbalaji13&layout=compact&theme=radical" alt="Top Languages" style="width:100%;max-width:420px;margin-top:1rem;border-radius:12px;box-shadow:0 2px 8px #0001;">
+                </div>
+                <!-- LeetCode Stats -->
+                <div style="min-width:320px;max-width:420px;text-align:center;">
+                    <h3>LeetCode Profile</h3>
+                    <iframe src="https://leetcard.jacoblin.cool/rahulbalaji13?theme=dark&ext=contest" width="100%" height="270" style="border:none;border-radius:12px;box-shadow:0 2px 8px #0001;min-width:320px;max-width:420px;" title="LeetCode Stats"></iframe>
+                    <a href="https://leetcode.com/u/rahulbalaji13/" target="_blank" class="btn btn--primary" style="margin-top:1rem;">View Full LeetCode Profile</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="projects" class="projects">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Projects</h2>
+                <div class="section-divider"></div>
+            </div>
+            <div class="projects-content" id="github-projects">
+                <div class="projects-grid" id="github-projects-grid">
+                    <div style="text-align:center; color:#888; font-size:1.2rem; padding:2rem;" id="projects-loading">Loading projects from GitHub...</div>
+                </div>
+    <style>
+    /* Horizontal scrollable project cards grid */
+    .projects-grid {
+        display: flex;
+        flex-direction: row;
+        gap: 1.5rem;
+        overflow-x: auto;
+        padding-bottom: 1rem;
+        scroll-snap-type: x mandatory;
+    }
+    .projects-grid .cert-card.project-card {
+        min-width: 260px;
+        max-width: 280px;
+        flex: 0 0 auto;
+        scroll-snap-align: start;
+        margin-bottom: 0;
+    }
+    .projects-grid::-webkit-scrollbar {
+        height: 10px;
+    }
+    .projects-grid::-webkit-scrollbar-thumb {
+        background: #e0e0e0;
+        border-radius: 5px;
+    }
+    .projects-grid::-webkit-scrollbar-track {
+        background: transparent;
+    }
+    @media (max-width: 600px) {
+        .projects-grid .cert-card.project-card {
+            min-width: 80vw;
+            max-width: 90vw;
+        }
+    }
+    </style>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications" class="certifications">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Certifications</h2>
+                <div class="section-divider"></div>
+            </div>
+            <div class="certifications-grid">
+                <div class="cert-card">
+                    <div class="cert-icon"><i class="fab fa-aws"></i></div>
+                    <h3>AWS Certified Cloud Practitioner</h3>
+                    <p>Amazon Web Services</p>
+                </div>
+                <div class="cert-card">
+                    <div class="cert-icon"><i class="fab fa-linkedin"></i></div>
+                    <h3>Generative AI for Business Leaders</h3>
+                    <p>LinkedIn</p>
+                </div>
+                <div class="cert-card">
+                    <div class="cert-icon"><i class="fas fa-code"></i></div>
+                    <h3>Software Engineer Intern</h3>
+                    <p>HackerRank</p>
+                </div>
+                <div class="cert-card">
+                    <div class="cert-icon"><i class="fas fa-atom"></i></div>
+                    <h3>Basics of Quantum Computing</h3>
+                    <p>IBM</p>
+                </div>
+                <div class="cert-card">
+                    <div class="cert-icon"><i class="fas fa-satellite"></i></div>
+                    <h3>Overview of Geographical Information System</h3>
+                    <p>ISRO</p>
+                </div>
+                <div class="cert-card">
+                    <div class="cert-icon"><i class="fas fa-trophy"></i></div>
+                    <h3>Smart India Hackathon</h3>
+                    <p>ISRO</p>
+                </div>
+                <div class="cert-card">
+                    <div class="cert-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h3>Cyber Security</h3>
+                    <p>Infosys Springboard</p>
+                </div>
+                <div class="cert-card">
+                    <div class="cert-icon"><i class="fas fa-globe"></i></div>
+                    <h3>Web Development Masterclass</h3>
+                    <p>Udemy</p>
+                </div>
+                <div class="cert-card">
+                    <div class="cert-icon"><i class="fas fa-database"></i></div>
+                    <h3>SQL Advanced</h3>
+                    <p>HackerRank</p>
+                </div>
+                <div class="cert-card">
+                    <div class="cert-icon"><i class="fab fa-python"></i></div>
+                    <h3>Python for Data Science and ML Bootcamp</h3>
+                    <p>Udemy</p>
+                </div>
+                <div class="cert-card">
+                    <div class="cert-icon"><i class="fas fa-lightbulb"></i></div>
+                    <h3>Innovation, Design and Entrepreneurship Bootcamp</h3>
+                    <p>MOE</p>
+                </div>
+                <div class="cert-card">
+                    <div class="cert-icon"><i class="fab fa-google"></i></div>
+                    <h3>Planning for a Google Workspace Deployment</h3>
+                    <p>Google</p>
+                </div>
+                <div class="cert-card">
+                    <div class="cert-icon"><i class="fas fa-puzzle-piece"></i></div>
+                    <h3>Problem Solving (Intermediate)</h3>
+                    <p>HackerRank</p>
+                </div>
+                <div class="cert-card">
+                    <div class="cert-icon"><i class="fab fa-python"></i></div>
+                    <h3>Python Beyond the Basics - OOP</h3>
+                    <p>Udemy</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Get In Touch</h2>
+                <div class="section-divider"></div>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Let's Connect</h3>
+                    <p>I'm always open to discussing new opportunities, collaborations, or answering any questions you might have.</p>
+                    <div class="contact-details">
+                        <div class="contact-detail">
+                            <i class="fas fa-phone"></i>
+                            <span>9080618420</span>
+                        </div>
+                        <div class="contact-detail">
+                            <i class="fas fa-envelope"></i>
+                            <span>rahul.balaji2026@gmail.com</span>
+                        </div>
+                        <div class="contact-detail">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>No :3, Second New Street, Thirunagar, Vellore - 632006, Tamil Nadu, India</span>
+                        </div>
+                        <div class="contact-detail">
+                            <i class="fab fa-linkedin"></i>
+                            <a href="https://www.linkedin.com/in/rahulbalaji13/" target="_blank">LinkedIn Profile</a>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <label for="name" class="form-label">Name *</label>
+                        <input type="text" id="name" name="name" class="form-control" required>
+                        <div class="error-message" id="nameError"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email *</label>
+                        <input type="email" id="email" name="email" class="form-control" required>
+                        <div class="error-message" id="emailError"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject" class="form-label">Subject</label>
+                        <input type="text" id="subject" name="subject" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="message" class="form-label">Message *</label>
+                        <textarea id="message" name="message" class="form-control" rows="5" required></textarea>
+                        <div class="error-message" id="messageError"></div>
+                    </div>
+                    <button type="submit" class="btn btn--primary btn--full-width">
+                        <span class="btn-text">Send Message</span>
+                        <span class="btn-loader hidden">
+                            <i class="fas fa-spinner fa-spin"></i>
+                        </span>
+                    </button>
+                    <div class="success-message hidden" id="successMessage">
+                        <i class="fas fa-check-circle"></i>
+                        Thank you! Your message has been sent successfully.
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <!-- Blog Section -->
+    <section id="blog" class="blog">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Blog</h2>
+                <div class="section-divider"></div>
+            </div>
+            <div class="blog-posts">
+                <div class="blog-post">
+                    <h3 class="blog-post-title">How I Became a SIH Finalist</h3>
+                    <div class="blog-post-meta">August 2025 | by Rahul Balaji</div>
+                    <p class="blog-post-excerpt">A quick journey through my experience at the Smart India Hackathon 2023, the challenges, the teamwork, and the lessons learned along the way.</p>
+                    <a href="#" class="btn btn--outline">Read More</a>
+                </div>
+                <div class="blog-post">
+                    <h3 class="blog-post-title">Top 5 Tips for Aspiring SDEs</h3>
+                    <div class="blog-post-meta">July 2025 | by Rahul Balaji</div>
+                    <p class="blog-post-excerpt">Breaking into software development? Here are my top 5 tips to help you stand out and succeed in your SDE journey.</p>
+                    <a href="#" class="btn btn--outline">Read More</a>
+                </div>
+                <div class="blog-post">
+                    <h3 class="blog-post-title">Why Mentoring Matters</h3>
+                    <div class="blog-post-meta">June 2025 | by Rahul Balaji</div>
+                    <p class="blog-post-excerpt">Mentoring over 100 bright minds has taught me the value of sharing knowledge and building a strong tech community.</p>
+                    <a href="#" class="btn btn--outline">Read More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Rahul Balaji. All rights reserved.</p>
+                <div class="footer-social">
+                    <a href="https://www.linkedin.com/in/rahulbalaji13/" target="_blank">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="app.js"></script>
+    <!-- Voice Assistant Script -->
+    <script>
+    // Visitor counter replaced with freecounterstat.com HTML snippet
+    window.addEventListener('DOMContentLoaded', function() {
+        // Collect main details from the portfolio
+        let details = '';
+        // Name and Title
+        const name = document.querySelector('.hero-name')?.innerText || '';
+        const title = document.querySelector('.hero-title')?.innerText || '';
+        details += name + '. ' + title + '. ';
+
+        // Contact
+        const contactItems = Array.from(document.querySelectorAll('.hero-contact .contact-item span'));
+        if (contactItems.length) {
+            details += 'Contact: ' + contactItems.map(e => e.innerText).join('. ') + '. ';
+        }
+
+        // About
+        const about = document.querySelector('.about-text')?.innerText || '';
+        if (about) {
+            details += 'About Me: ' + about + '. ';
+        }
+
+        // Education
+        const education = Array.from(document.querySelectorAll('.education .timeline-item')).map(item => {
+            const year = item.querySelector('.timeline-year')?.innerText || '';
+            const degree = item.querySelector('h3')?.innerText || '';
+            const place = item.querySelector('p')?.innerText || '';
+            return year + ': ' + degree + ' at ' + place;
+        }).join('. ');
+        if (education) {
+            details += 'Education: ' + education + '. ';
+        }
+
+        // Experience
+        const experience = Array.from(document.querySelectorAll('.experience-card')).map(card => {
+            const role = card.querySelector('h3')?.innerText || '';
+            const period = card.querySelector('.experience-period')?.innerText || '';
+            const desc = card.querySelector('p')?.innerText || '';
+            return role + ' (' + period + '): ' + desc;
+        }).join('. ');
+        if (experience) {
+            details += 'Experience: ' + experience + '. ';
+        }
+
+        // Skills
+        const skills = Array.from(document.querySelectorAll('.skills-grid .skill-card h3')).map(e => e.innerText).join(', ');
+        if (skills) {
+            details += 'Skills: ' + skills + '. ';
+        }
+
+        // Certifications
+        const certs = Array.from(document.querySelectorAll('.cert-card h3')).map(e => e.innerText).join(', ');
+        if (certs) {
+            details += 'Certifications: ' + certs + '. ';
+        }
+
+        // Blog
+        const blogPosts = Array.from(document.querySelectorAll('.blog-post')).map(post => {
+            const title = post.querySelector('.blog-post-title')?.innerText || '';
+            const meta = post.querySelector('.blog-post-meta')?.innerText || '';
+            const excerpt = post.querySelector('.blog-post-excerpt')?.innerText || '';
+            return title + ' (' + meta + '): ' + excerpt;
+        }).join('. ');
+        if (blogPosts) {
+            details += 'Blog: ' + blogPosts + '. ';
+        }
+
+        // Use Web Speech API to read the details
+        function speakPortfolio(details) {
+            if ('speechSynthesis' in window) {
+                const synth = window.speechSynthesis;
+                let voices = synth.getVoices();
+                console.log('Available voices:', voices);
+                // Try to pick a default English voice
+                let selectedVoice = voices.find(v => v.lang.startsWith('en') && v.localService) || voices.find(v => v.lang.startsWith('en')) || voices[0];
+                const utter = new SpeechSynthesisUtterance(details);
+                utter.rate = 1;
+                utter.pitch = 1;
+                utter.volume = 1;
+                if (selectedVoice) {
+                    utter.voice = selectedVoice;
+                    console.log('Selected voice:', selectedVoice.name, selectedVoice.lang);
+                } else {
+                    console.warn('No suitable voice found.');
+                }
+                synth.cancel(); // Stop any previous speech
+                synth.speak(utter);
+            } else {
+                alert('Sorry, your browser does not support speech synthesis.');
+            }
+        }
+
+        // Some browsers load voices asynchronously
+        if ('speechSynthesis' in window) {
+            let synth = window.speechSynthesis;
+            if (synth.onvoiceschanged !== undefined) {
+                synth.onvoiceschanged = function() {
+                    speakPortfolio(details);
+                };
+            } else {
+                // Fallback: try to speak after a short delay
+                setTimeout(() => speakPortfolio(details), 500);
+            }
+        }
+    });
+    </script>
+</script>
+<script>
+// Dynamically fetch and display GitHub projects as square cards like certifications
+document.addEventListener('DOMContentLoaded', function() {
+    const username = 'rahulbalaji13';
+    const grid = document.getElementById('github-projects-grid');
+    const loadingEl = document.getElementById('projects-loading');
+    fetch(`https://api.github.com/users/${username}/repos?per_page=100`)
+        .then(res => res.json())
+        .then(repos => {
+            // Filter: only non-fork, non-empty repos
+            const filtered = repos.filter(r => !r.fork && r.size > 0);
+            if (filtered.length === 0) {
+                loadingEl.textContent = 'No public projects found.';
+                return;
+            }
+            loadingEl.remove();
+            // Sort by most recently updated
+            filtered.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
+            // Create square cards styled like cert-card
+            filtered.forEach(repo => {
+                let techStack = repo.language || '';
+                if (repo.topics && repo.topics.length) {
+                    techStack += (techStack ? ', ' : '') + repo.topics.join(', ');
+                }
+                const card = document.createElement('div');
+                card.className = 'cert-card project-card';
+                card.style.cursor = 'pointer';
+                card.onclick = () => window.open(repo.html_url, '_blank');
+                card.innerHTML = `
+                    <div class="cert-icon"><i class="fas fa-folder-open"></i></div>
+                    <h3 class="project-title" style="margin-bottom:0.5rem;">
+                        <a href="${repo.html_url}" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">${repo.name}</a>
+                    </h3>
+                    <p class="project-desc" style="font-size:0.95em;min-height:2.5em;">${repo.description ? repo.description : ''}</p>
+                    <div class="project-meta" style="font-size:0.85em;">
+                        <span class="project-tech"><strong>Tech:</strong> ${techStack || 'N/A'}</span><br>
+                        <span class="project-stars"><i class="fas fa-star"></i> ${repo.stargazers_count}</span>
+                        <span class="project-updated" style="float:right;">${new Date(repo.updated_at).toLocaleDateString()}</span>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        })
+        .catch(() => {
+            loadingEl.textContent = 'Failed to load projects from GitHub.';
+        });
+});
+</script>
+</body>
+</html>
